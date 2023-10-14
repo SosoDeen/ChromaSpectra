@@ -1,0 +1,1 @@
+This is a test of the new dialogue system.*Hopefully it works just as I hope.^This should the gnome talking now...*Did it break?
