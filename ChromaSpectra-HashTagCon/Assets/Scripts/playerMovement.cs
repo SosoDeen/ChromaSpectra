@@ -5,7 +5,15 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class playerMovement : MonoBehaviour
 {
+    public enum PlayerState
+    {
+        Standard,
+        Playing,
+        Dialogue
+    }
+
     // Public variables
+    public PlayerState currentState = PlayerState.Standard;
     public float moveSpeed = 5f; // Adjust this to change the player's movement speed.
 
     [Header ("Camera")]
