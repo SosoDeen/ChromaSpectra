@@ -1,0 +1,15 @@
+Changed inventory and text box dimensions and positions slightly
+Inventory Background:
+ - Pos Y 410
+ - Width 850
+ - Height 200
+Inventory Items:
+ - Pos Y 3.7
+TextBox Background:
+ - Pos Y -400
+ - Width 850
+ - Height 150
+TextBox ACTUAL TEXT:
+ - Pos Y -3.9
+
+
