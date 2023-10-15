@@ -1539,6 +1539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIMenu: {fileID: 1092780438}
   fadeInDelay: 32
+  isSkippable: 1
 --- !u!225 &1092780438
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1549,7 +1550,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &1275180976
 GameObject:
