@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Swing_Base_color
+  m_Name: WateringCan
   m_Shader: {fileID: 4800000, guid: 141011b51b9cec742b382a44eb089404, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5fc837309eef2b242b526d43d50f95b8, type: 3}
+        m_Texture: {fileID: 2800000, guid: d69e4608160b6a94299f07d96b9fb69c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -65,10 +65,10 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _Metallic: 0.905
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.0397
+    - _OutlineWidth: 0.1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
