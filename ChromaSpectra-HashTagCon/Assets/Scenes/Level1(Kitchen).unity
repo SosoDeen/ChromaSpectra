@@ -3367,7 +3367,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 11.056, y: 25.209, z: 0.436}
 --- !u!1001 &1298174350
 PrefabInstance:
@@ -3423,7 +3423,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 620c83171d32334488f72b8f94da26e3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: aaa78aeeeed414a4caa2b5aac8f1e9be, type: 2}
+      objectReference: {fileID: 2100000, guid: 45d483e45043c2040b0410ebd34964a1, type: 2}
     - target: {fileID: 919132149155446097, guid: 620c83171d32334488f72b8f94da26e3, type: 3}
       propertyPath: m_Name
       value: MusicTable
