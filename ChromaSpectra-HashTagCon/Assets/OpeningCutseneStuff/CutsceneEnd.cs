@@ -5,20 +5,22 @@ using UnityEngine.Playables;
 
 public class CutsceneEnd : MonoBehaviour
 {
-    public GameObject UI;
+   // public GameObject UI;
     PlayableDirector director;
     public double visibleDelay;
-    public GameObject[] hidden;
+    //public GameObject[] hidden;
 
     // Start is called before the first frame update
     void Start()
     {
-        UI.gameObject.SetActive(false);
+        //UI.gameObject.SetActive(false);
         director = GetComponent<PlayableDirector>();
+        /*
         for(int i = 0; i < hidden.Length; i++)
         {
             hidden[i].SetActive(false);
         }
+        */
     }
 
     // Update is called once per frame
@@ -40,18 +42,21 @@ public class CutsceneEnd : MonoBehaviour
         }
         else if(director.time == director.duration)
         {
+            /*
             for (int i = 0; i < hidden.Length; i++)
             {
                 hidden[i].SetActive(true);
             }
             ShowUI();
+            */
         }
     }
 
     void ShowUI()
     {
+        /*
         UI.gameObject.SetActive(true);
         Debug.Log("SceneEnd");
-        
+        */
     }
 }

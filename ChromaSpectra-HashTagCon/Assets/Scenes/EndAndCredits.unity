@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1945054160}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
         m_MethodName: GameQuit
         m_Mode: 1
@@ -1797,7 +1797,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1945054160}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
         m_MethodName: ReturnToMain
         m_Mode: 1
