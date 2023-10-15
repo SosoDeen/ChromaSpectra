@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIMenu: {fileID: 19937036}
   fadeInDelay: 19
+  isSkippable: 0
 --- !u!225 &19937036
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1799,7 +1800,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1945054160}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
-        m_MethodName: ReturnToMain
+        m_MethodName: GameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
