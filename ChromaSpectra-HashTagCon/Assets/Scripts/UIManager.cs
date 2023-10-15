@@ -237,11 +237,11 @@ public class UIManager : MonoBehaviour
     {
         if (currently)
         {
-            calculateUI(playModeBox, playModeDistance, 0.5f);
+            calculateUI(playModeBox, playModeDistance, 0.6f);
         }
         else if (!currently)
         {
-            calculateUI(playModeBox, -playModeDistance, 1f);
+            calculateUI(playModeBox, -playModeDistance, 0.5f);
         }
     }
 

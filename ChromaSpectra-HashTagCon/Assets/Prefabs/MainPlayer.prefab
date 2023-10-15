@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2065979011770679814}
   - component: {fileID: 2065979011770679817}
   - component: {fileID: 3093742219913699622}
+  - component: {fileID: 9185743849061597340}
   - component: {fileID: 2065979011770679816}
   - component: {fileID: 2065979011770679819}
   m_Layer: 0
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a31d03d0e988a4089aa9541be56685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
   moveSpeed: 3
   mainCamera: {fileID: 0}
   roomCameras:
@@ -184,6 +186,9 @@ MonoBehaviour:
   bgm: {fileID: 2065979011770679816}
   postProcessing: {fileID: 0}
   inventory: {fileID: 0}
+  dialogue: {fileID: 0}
+  playUI: {fileID: 9185743849061597340}
+  playerAnim: {fileID: 0}
 --- !u!114 &3093742219913699622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +208,29 @@ MonoBehaviour:
   noSpamPickup: 0
   manager: {fileID: 0}
   uIManager: {fileID: 0}
+  soundManager: {fileID: 0}
+--- !u!114 &9185743849061597340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065979011770679823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f160d9e91e9f343be063fe18fffb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  uIManager: {fileID: 0}
+  letterNotes:
+  - {fileID: 21300000, guid: 9dbe79d93dd93f34eb6fe2dd59dbb600, type: 3}
+  - {fileID: 21300000, guid: 55eb6674a4a433147a8b046ef4064c9c, type: 3}
+  - {fileID: 21300000, guid: 99455d1b76d800f4ebe2d38432939a32, type: 3}
+  - {fileID: 21300000, guid: b375e34ff6e8fb047b17988c197d0af7, type: 3}
+  - {fileID: 21300000, guid: 3c43c67b0cb63d845b0aa5b6ab9356c1, type: 3}
+  - {fileID: 21300000, guid: 4ac82b255299b1a41a48fc6d07f3ed4d, type: 3}
+  playUIActive: 0
 --- !u!82 &2065979011770679816
 AudioSource:
   m_ObjectHideFlags: 0
