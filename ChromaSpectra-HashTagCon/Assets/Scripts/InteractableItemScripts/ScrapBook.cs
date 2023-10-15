@@ -21,6 +21,7 @@ public class ScrapBook : MonoBehaviour, inventoryManager.ItemUser
         Debug.Log("Congrats you have beaten the game");
         Destroy(GameObject.FindGameObjectWithTag("SoundManager"));
         
-        SceneManager.LoadScene(5);
+        SceneTransition transition = FindObjectOfType<SceneTransition>();
+        transition.NextLevelFade("EndAndCredits");
     }
 }

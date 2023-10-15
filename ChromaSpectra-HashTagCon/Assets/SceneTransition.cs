@@ -26,6 +26,7 @@ public class SceneTransition : MonoBehaviour
         anim.SetTrigger("FadeOut");
         sceneName = scene;
     }
+
     public void LoadNextLevel()
     {
         Debug.Log("NextSceneLoading");
