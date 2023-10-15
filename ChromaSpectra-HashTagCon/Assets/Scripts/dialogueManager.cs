@@ -35,7 +35,7 @@ public class dialogueManager : MonoBehaviour
         dialogueString = text.text;
 
         GameManager.inCinematic = true;
-        ui.calculateUI(ui.dialogueBox, ui.dialogueDistance);
+        ui.calculateUI(ui.dialogueBox, ui.dialogueDistance, 0.2f);
 
         speakerSections = textSplit(dialogueString, '^');
         cjDisplaySection();
@@ -46,7 +46,7 @@ public class dialogueManager : MonoBehaviour
         dialogueString = text;
 
         GameManager.inCinematic = true;
-        ui.calculateUI(ui.dialogueBox, ui.dialogueDistance);
+        ui.calculateUI(ui.dialogueBox, ui.dialogueDistance, 0.2f);
 
         speakerSections = textSplit(dialogueString, '^');
         cjDisplaySection();
@@ -87,7 +87,7 @@ public class dialogueManager : MonoBehaviour
         player.playerAnim.SetBool("Playing", false);
 
         GameManager.inCinematic = true;
-        ui.calculateUI(ui.dialogueBox, ui.dialogueDistance);
+        ui.calculateUI(ui.dialogueBox, ui.dialogueDistance, 0.2f);
 
         speakerSections = textSplit(dialogueString, '^');
         displaySection();

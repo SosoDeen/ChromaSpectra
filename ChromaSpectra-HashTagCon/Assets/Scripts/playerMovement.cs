@@ -42,6 +42,7 @@ public class playerMovement : MonoBehaviour
     public GameObject postProcessing; // Reference to the post-processing game object.
     public inventoryManager inventory;
     public dialogueManager dialogue;
+    public PlayUIManager playUI;
     private GameManager manager;
    
 
@@ -198,6 +199,7 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKeyDown(playModeKey) && !GameManager.cameraMoving && !GameManager.inCinematic && !GameManager.inventoryOpen)
         {
             GameManager.isInPlayMode = !GameManager.isInPlayMode;
+            playUI.togglePlayUI();
             GameManager.cameraMoving = true;
             //audioSource.Stop();
             songPlayed = "";
@@ -293,6 +295,11 @@ public class playerMovement : MonoBehaviour
         if (GameManager.inventoryOpen)
         {
             inventory.toggleInventory();
+        }
+
+        if (playUI.playUIActive)
+        {
+            playUI.togglePlayUI();
         }
 
         dialogue.getDialogue(dialogueObj);

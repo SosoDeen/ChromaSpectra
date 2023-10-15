@@ -28,6 +28,10 @@ public class UIManager : MonoBehaviour
     public RectTransform dialogueBox; // reference to UI backing image
     public float dialogueDistance = 200f; // reference to movement distance for dialogueBox
 
+    public RectTransform playModeBox;
+    public float playModeDistance = 300f;
+    public Image[] noteImages;
+
     public Image[] inventoryImages;
     public Button[] inventoryButtons;
     public RectTransform inventoryBox;
@@ -139,7 +143,7 @@ public class UIManager : MonoBehaviour
     public void endDialogue()
     {
         currentText = "";
-        calculateUI(dialogueBox, dialogueDistance * -1);
+        calculateUI(dialogueBox, dialogueDistance * -1, 0.2f);
         inDialogue = false;
     }
 
@@ -159,11 +163,11 @@ public class UIManager : MonoBehaviour
         updateInventory();
         if (currently)
         {
-            calculateUI(inventoryBox, inventoryDistance);
+            calculateUI(inventoryBox, inventoryDistance, 0.2f);
         }
         else if (!currently)
         {
-            calculateUI(inventoryBox, -inventoryDistance);
+            calculateUI(inventoryBox, -inventoryDistance, 0.2f);
         }
     }
 
@@ -222,22 +226,33 @@ public class UIManager : MonoBehaviour
     }
 
     // calculates which UI element and distance to move
-    public void calculateUI(RectTransform UI, float uiDestination)
+    public void calculateUI(RectTransform UI, float uiDestination, float time)
     {
         Vector3 currentUIPosition = UI.localPosition;
         Vector3 newUIPosition = new Vector3(currentUIPosition.x, currentUIPosition.y + uiDestination, currentUIPosition.z);
-        StartCoroutine(moveUI(currentUIPosition, newUIPosition, UI));
+        StartCoroutine(moveUI(currentUIPosition, newUIPosition, UI, time));
+    }
+
+    public void musicToggle(bool currently)
+    {
+        if (currently)
+        {
+            calculateUI(playModeBox, playModeDistance, 0.5f);
+        }
+        else if (!currently)
+        {
+            calculateUI(playModeBox, -playModeDistance, 1f);
+        }
     }
 
     // moves UI based on calculateUI distances
-    public IEnumerator moveUI(Vector3 start, Vector3 end, RectTransform button)
+    public IEnumerator moveUI(Vector3 start, Vector3 end, RectTransform button, float moveTime)
     {
-        float totalMovementTime = 0.2f;
         float currentMovementTime = 0f;
         while (Vector3.Distance(button.transform.localPosition, end) > 0)
         {
             currentMovementTime += Time.deltaTime;
-            button.transform.localPosition = Vector3.Lerp(start, end, currentMovementTime / totalMovementTime);
+            button.transform.localPosition = Vector3.Lerp(start, end, currentMovementTime / moveTime);
             yield return null;
         }
     }
