@@ -9,9 +9,9 @@ public class TutorialManager : MonoBehaviour
     public GameObject tutorialPopup;
     //public String tutorialMessage;
     public KeyCode taskKey;
-    private Boolean touchingLol;
-    private Boolean shown;
-    private Boolean taskComplete;
+    private bool touchingLol;
+    private bool shown;
+    private bool taskComplete;
     //public Vector3 textOffset = new Vector3(0, 1.3f, 0);
 
     // Start is called before the first frame update
