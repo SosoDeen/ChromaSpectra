@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Return To Start
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e287834449fe85741a46f1566b9f9252, type: 2}
   m_sharedMaterial: {fileID: 8085564341736083752, guid: e287834449fe85741a46f1566b9f9252, type: 2}
@@ -1797,7 +1797,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1945054160}
         m_TargetAssemblyTypeName: ButtonsScript, Assembly-CSharp
-        m_MethodName: GameStart
+        m_MethodName: ReturnToMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
