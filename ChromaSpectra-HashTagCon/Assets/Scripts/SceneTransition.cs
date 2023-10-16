@@ -19,7 +19,7 @@ public class SceneTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("This scene " + sceneName);
+        //Debug.Log("This scene " + sceneName);
     }
     public void NextLevelFade(string scene)
     {

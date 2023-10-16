@@ -7,6 +7,7 @@ public class Puzzle_Kitchen : MonoBehaviour
 {
     public GameObject[] ingredients;
     public GameObject pie;
+    public GameObject pieAnimation; // dust particle to make it look like berta is making a pie!
 
     public TextAsset text;
     public GameObject speaker1;
@@ -59,6 +60,8 @@ public class Puzzle_Kitchen : MonoBehaviour
     }
     public void MakeThePie()
     {
+        pieAnimation.SetActive(true);   // shows the pie making animation!
+
         for (int i = ingredients.Length -1; i >= 0; i--)
         {
             ingredients[i].SetActive(false);
