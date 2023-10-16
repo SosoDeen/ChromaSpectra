@@ -81,6 +81,8 @@ public class dialogueManager : MonoBehaviour
     {
         ui.musicToggle(false);
         GameManager.isInPlayMode = false;
+        ui.inventoryToggle(false);
+        GameManager.inventoryOpen = false;
         dialogueString = text.text;
         _speaker1 = speak1;
         _speaker2 = speak2;

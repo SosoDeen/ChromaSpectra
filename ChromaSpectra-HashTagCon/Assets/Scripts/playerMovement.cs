@@ -73,6 +73,7 @@ public class playerMovement : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         dialogue = GameObject.FindWithTag("UI").GetComponent<dialogueManager>();
+        inventory = FindObjectOfType<inventoryManager>();   
         manager = GameManager.Instance;
 
         defaultRotation.Set(.177f, 0f, 0f, 1f);

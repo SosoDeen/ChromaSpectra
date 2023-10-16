@@ -158,16 +158,19 @@ public class UIManager : MonoBehaviour
         updateInventory();
     }
 
+    bool inventoryShown = false;
     public void inventoryToggle(bool currently)
     {
         updateInventory();
-        if (currently)
+        if (currently && !inventoryShown)
         {
             calculateUI(inventoryBox, inventoryDistance, 0.2f);
+            inventoryShown = true;
         }
-        else if (!currently)
+        else if (!currently && inventoryShown)
         {
             calculateUI(inventoryBox, -inventoryDistance, 0.2f);
+            inventoryShown = false;
         }
     }
 

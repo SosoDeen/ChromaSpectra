@@ -46,6 +46,7 @@ public class ButtonsScript : MonoBehaviour
         {
             GameManager.songsUnlocked = 0;
             GameManager.Progression = 0;
+            GameManager.Color = "GREY";
             Destroy(gm.gameObject);
         }
         SceneManager.LoadScene(0);
