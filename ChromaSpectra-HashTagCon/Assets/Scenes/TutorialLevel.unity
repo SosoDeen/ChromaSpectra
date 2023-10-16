@@ -3586,6 +3586,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f39617f22b9b11649be18512ee68b984, type: 3}
+--- !u!114 &1154202164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2204456548400711676, guid: 58a86f3cd91b0654da72e239d07b924c, type: 3}
+  m_PrefabInstance: {fileID: 6645090963328267312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bc7030f5bb244b09b8037c2ded95f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1182864629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6163,6 +6174,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2065979011770679817, guid: 29c6a92d1cffb8f4699d3803ee8f04ab, type: 3}
+      propertyPath: ripple
+      value: 
+      objectReference: {fileID: 1154202164}
     - target: {fileID: 2065979011770679817, guid: 29c6a92d1cffb8f4699d3803ee8f04ab, type: 3}
       propertyPath: uIManager
       value: 

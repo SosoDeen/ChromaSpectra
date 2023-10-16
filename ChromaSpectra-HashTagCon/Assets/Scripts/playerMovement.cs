@@ -43,6 +43,7 @@ public class playerMovement : MonoBehaviour
     public inventoryManager inventory;
     public dialogueManager dialogue;
     public PlayUIManager playUI;
+    public RippleEffect ripple;
     private GameManager manager;
    
 
@@ -77,6 +78,7 @@ public class playerMovement : MonoBehaviour
         dialogue = GameObject.FindWithTag("UI").GetComponent<dialogueManager>();
         inventory = FindObjectOfType<inventoryManager>();   
         manager = GameManager.Instance;
+        ripple = mainCamera.GetComponent<RippleEffect>();
 
         defaultRotation.Set(.177f, 0f, 0f, 1f);
         zoomRotation.Set(0, 0, 0, 1);
@@ -144,6 +146,7 @@ public class playerMovement : MonoBehaviour
                 if (songPlayed == "012" && GameManager.songsUnlocked >= 2)
                 {
                     Debug.Log("Song 1.");
+                    ripple.TriggerRippleEffect(new Color(1.0f, 0.71f, 0.72f));
                     GameManager.Color = "RED"; //sets global var that can be used to hide/unhide/change objects;
                     GameManager.CanChangeTrack = true;
                 }
@@ -152,6 +155,7 @@ public class playerMovement : MonoBehaviour
                 else if (songPlayed == "345" && GameManager.songsUnlocked >= 3)
                 {
                     Debug.Log("Song 2.");
+                    ripple.TriggerRippleEffect(new Color(0.71f, 1.0f, 0.79f));
                     GameManager.Color = "GREEN";
                     GameManager.CanChangeTrack = true;
                 }
@@ -159,12 +163,14 @@ public class playerMovement : MonoBehaviour
                 else if (songPlayed == "143" && GameManager.songsUnlocked >= 4)
                 {
                     Debug.Log("Song 3.");
+                    ripple.TriggerRippleEffect(new Color(0.5f, 0.84f, 1.0f));
                     GameManager.Color = "BLUE";
                     GameManager.CanChangeTrack = true;
                 }
                 else
                 {
                     Debug.Log("Not a song");
+                    ripple.TriggerRippleEffect(new Color(0.37f, 0.37f, 0.37f));
                     GameManager.Color = "GREY";
                     GameManager.CanChangeTrack = true;
                 }
