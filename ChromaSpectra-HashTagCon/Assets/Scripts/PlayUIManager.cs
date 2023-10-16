@@ -25,7 +25,7 @@ public class PlayUIManager : MonoBehaviour
     public void togglePlayUI()
     {
         noteCount = 0;
-        uIManager.musicToggle(!playUIActive);
-        playUIActive = !playUIActive;
+        uIManager.musicToggle(GameManager.isInPlayMode);
+        playUIActive = GameManager.isInPlayMode;
     }
 }

@@ -174,6 +174,7 @@ public class playerMovement : MonoBehaviour
 
             }
         }
+        else { audioSource.Stop(); }
         //The changing of the post process colors (seperate for scene change reasons)
         if (GameManager.Color == "RED")
         {

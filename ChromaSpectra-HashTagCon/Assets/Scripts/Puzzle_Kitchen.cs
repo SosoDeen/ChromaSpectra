@@ -14,6 +14,7 @@ public class Puzzle_Kitchen : MonoBehaviour
 
     public GameObject OvenPie;
     private dialogueManager dialogue;
+    UIManager uiManager;
 
     bool allIngredients = false;
     bool readyforPie = false;
@@ -24,6 +25,7 @@ public class Puzzle_Kitchen : MonoBehaviour
     {
         pie.SetActive(false);
         dialogue = GameObject.FindWithTag("UI").GetComponent<dialogueManager>();
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
@@ -49,6 +51,9 @@ public class Puzzle_Kitchen : MonoBehaviour
             finished = true;
             dialogue.startDialogue(text, speaker1, speaker2);
             GameManager.Progression++;
+            uiManager.musicToggle(false);
+            GameManager.isInPlayMode = false;
+            GameManager.inCinematic = true;
         }
         
     }
