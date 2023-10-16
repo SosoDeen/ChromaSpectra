@@ -27,6 +27,7 @@ public class dialogueManager : MonoBehaviour
     {
         ui = GameObject.FindWithTag("UI").GetComponent<UIManager>();
         player = GameObject.FindWithTag("Player").GetComponent<playerMovement>();
+
     }
 
     //CJ causing chaos
@@ -78,6 +79,8 @@ public class dialogueManager : MonoBehaviour
     }
     public void startDialogue(TextAsset text, GameObject speak1, GameObject speak2)
     {
+        ui.musicToggle(false);
+        GameManager.isInPlayMode = false;
         dialogueString = text.text;
         _speaker1 = speak1;
         _speaker2 = speak2;

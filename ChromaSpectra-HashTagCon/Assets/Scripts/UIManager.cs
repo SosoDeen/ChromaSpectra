@@ -233,15 +233,18 @@ public class UIManager : MonoBehaviour
         StartCoroutine(moveUI(currentUIPosition, newUIPosition, UI, time));
     }
 
+    bool musicShown = false;
     public void musicToggle(bool currently)
     {
-        if (currently)
+        if (currently && !musicShown)
         {
             calculateUI(playModeBox, playModeDistance, 0.6f);
+            musicShown = true;
         }
-        else if (!currently)
+        else if(! currently && musicShown)
         {
             calculateUI(playModeBox, -playModeDistance, 0.5f);
+            musicShown=false;
         }
     }
 
