@@ -29,7 +29,8 @@ public class ButtonsScript : MonoBehaviour
             GameManager.Color = "GREY";
             Destroy(gm.gameObject);
         }
-        SceneManager.LoadScene(1);
+        SceneTransition transition = FindObjectOfType<SceneTransition>();
+        transition.NextLevelFade("TutorialLevel");
         Debug.Log("START GAME");
     }
 
@@ -49,7 +50,8 @@ public class ButtonsScript : MonoBehaviour
             GameManager.Color = "GREY";
             Destroy(gm.gameObject);
         }
-        SceneManager.LoadScene(0);
+        SceneTransition transition = FindObjectOfType<SceneTransition>();
+        transition.NextLevelFade("MainMenu");
         Debug.Log("MainMenu");
     }
 
