@@ -250,6 +250,12 @@ public class UIManager : MonoBehaviour
             musicShown=false;
         }
     }
+    public void updateNote(int notePos, Sprite sprite, Color color)
+    {
+        noteImages[notePos].color = color;
+        noteImages[notePos].sprite = sprite;
+    }
+
 
     // moves UI based on calculateUI distances
     public IEnumerator moveUI(Vector3 start, Vector3 end, RectTransform button, float moveTime)

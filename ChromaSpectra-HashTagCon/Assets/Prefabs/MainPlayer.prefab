@@ -230,6 +230,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b375e34ff6e8fb047b17988c197d0af7, type: 3}
   - {fileID: 21300000, guid: 3c43c67b0cb63d845b0aa5b6ab9356c1, type: 3}
   - {fileID: 21300000, guid: 4ac82b255299b1a41a48fc6d07f3ed4d, type: 3}
+  blankSprite: {fileID: 0}
   playUIActive: 0
 --- !u!82 &2065979011770679816
 AudioSource:

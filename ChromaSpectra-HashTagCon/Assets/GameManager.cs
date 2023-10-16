@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
             Time.timeScale = 0.0f;
         }
-        Debug.Log("Progress " + Progression);  
+        //Debug.Log("Progress " + Progression);  
         
     }
     void Awake()

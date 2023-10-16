@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: grey
+  m_Name: greyExtra
   m_Shader: {fileID: 4800000, guid: 141011b51b9cec742b382a44eb089404, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -28,7 +28,7 @@ Material:
     m_Floats:
     - _Glossiness: 0.5
     - _Metallic: 0
-    - _OutlineWidth: 0.15
+    - _OutlineWidth: 0.102
     m_Colors:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

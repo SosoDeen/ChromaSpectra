@@ -55,6 +55,8 @@ public class playerMovement : MonoBehaviour
     private int currentRoom = 0; // Index of the current room.
     //private bool facingForward = true;
     private Vector3 zoomedPosition; // Position of the camera when zoomed in.
+    private Coroutine camCoroutine;
+    private Coroutine antiCoroutine;
     private Vector3 cameraLocation; // Position of the camera when not zoomed in.
     private Quaternion defaultRotation; // Default rotation of the camera.
     private Quaternion zoomRotation; // Rotation of the camera when zoomed in.
@@ -123,6 +125,7 @@ public class playerMovement : MonoBehaviour
                     Debug.Log("Loaded Note" + noteIndex);
                     songPlayed += i.ToString();
                     audioSource.Play();
+                    playUI.addNoteSprite(i);
                 }
                 // stops playing sound when note is released
                 else if (Input.GetKeyUp(noteKeys[i]) && noteIndex == i)
@@ -234,7 +237,10 @@ public class playerMovement : MonoBehaviour
         GameManager.isZoomed = true;
         GameManager.cameraMoving = true;
         zoomedPosition = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z - zoomDistance);
-        StartCoroutine(MoveCamera(zoomedPosition, zoomRotation)); 
+        if (camCoroutine == null)
+        {
+            camCoroutine = StartCoroutine(MoveCamera(zoomedPosition, zoomRotation));
+        }
     }
 
     //if now value defaults to player
@@ -243,7 +249,10 @@ public class playerMovement : MonoBehaviour
         GameManager.isZoomed = true;
         GameManager.cameraMoving = true;
         zoomedPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - zoomDistance);
-        StartCoroutine(MoveCamera(zoomedPosition, zoomRotation));
+        if (camCoroutine == null)
+        {
+            camCoroutine = StartCoroutine(MoveCamera(zoomedPosition, zoomRotation));
+        }    
     }
 
 
@@ -253,12 +262,16 @@ public class playerMovement : MonoBehaviour
         GameManager.isZoomed = false;
         GameManager.cameraMoving = true;
         cameraLocation = new Vector3(roomCameras[currentRoom].transform.position.x, roomCameras[currentRoom].transform.position.y + cameraHeight, roomCameras[currentRoom].transform.position.z - cameraDistance);
-        StartCoroutine(MoveCamera(cameraLocation, defaultRotation));
+        if (camCoroutine == null)
+        {
+            camCoroutine = StartCoroutine(MoveCamera(cameraLocation, defaultRotation));
+        }
     }
 
     // handles camera movement
     private IEnumerator MoveCamera(Vector3 targetPosition, Quaternion targetRotation)
     {
+        antiCoroutine = StartCoroutine(antiSoftlock());
         while (mainCamera.transform.position != targetPosition || mainCamera.transform.rotation != targetRotation)
         {
             mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, targetPosition, cameraMoveSpeed * Time.deltaTime);
@@ -266,6 +279,21 @@ public class playerMovement : MonoBehaviour
             yield return null;
         }
         GameManager.cameraMoving = false;
+        camCoroutine = null;
+        StopCoroutine(antiCoroutine);
+        antiCoroutine = null;
+    }
+
+    private IEnumerator antiSoftlock()
+    {
+        yield return new WaitForSeconds(5f);
+        if (GameManager.cameraMoving != false || camCoroutine != null)
+        {
+            StopCoroutine(camCoroutine);
+            camCoroutine = null;
+            GameManager.cameraMoving = false;
+            GameManager.isInPlayMode = false;
+        }
     }
 
     // checks if player enters a collider
@@ -281,7 +309,10 @@ public class playerMovement : MonoBehaviour
             {
                 currentRoom = newRoom;
                 cameraLocation = new Vector3(roomCameras[currentRoom].transform.position.x, roomCameras[currentRoom].transform.position.y + cameraHeight, roomCameras[currentRoom].transform.position.z - cameraDistance);
-                StartCoroutine(MoveCamera(cameraLocation, defaultRotation));        
+                if (camCoroutine == null)
+                {
+                    camCoroutine = StartCoroutine(MoveCamera(cameraLocation, defaultRotation));
+                }
             }
         }
         // if tagged with dialogue, sent the cooresponding dialogue to UIManager
