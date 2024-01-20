@@ -40,16 +40,16 @@ public class UIManager : MonoBehaviour
     public float inventoryDelay = 2f;
 
     [Header("Dialogue Audio")]
-    //[SerializeField] private AudioClip dialogueTypingSoundClip;
     [SerializeField] private AudioClip[] dialogueTypingSoundClips;
-    private AudioSource dialogueAudioSource;
     [SerializeField] private bool stopAudioSource; //keep one shot sounds from overlapping
     //randomize pitch
-    [SerializeField] private int frequencyLevel = 2;
+    [SerializeField] private int frequencyLevel = 2; //word per sound frequency
     [Range(-3,3)]
     [SerializeField] private float minPitch = 0.5f;
     [Range(-3, 3)]
     [SerializeField] private float maxPitch = 3f;
+    [SerializeField] private bool makePredictable; //whether or not we do randomized sound selection or not
+    private AudioSource dialogueAudioSource;
 
 
     private void Start()
@@ -133,16 +133,19 @@ public class UIManager : MonoBehaviour
 
     private void playDialogueSound(int currentDisplayedWordCount)
     {
-        //play sound every word
-        /*if (stopAudioSource) //stopping sound before next one plays makes awful clipping sound
+        if(currentDisplayedWordCount % frequencyLevel == 0)
         {
-            dialogueAudioSource.Stop();
-        }*/
-        int randomIndex = Random.Range(0, dialogueTypingSoundClips.Length);
-        AudioClip audioClip = dialogueTypingSoundClips[randomIndex];
-        dialogueAudioSource.pitch = Random.Range(minPitch, maxPitch);
-        dialogueAudioSource.PlayOneShot(audioClip);
-
+            //play sound every word
+            if (stopAudioSource) //stopping sound before next one plays makes awful clipping sound
+            {
+                dialogueAudioSource.Stop();
+            }
+            int randomIndex = Random.Range(0, dialogueTypingSoundClips.Length);
+            AudioClip audioClip = dialogueTypingSoundClips[randomIndex];
+            dialogueAudioSource.pitch = Random.Range(minPitch, maxPitch);
+            dialogueAudioSource.PlayOneShot(audioClip);
+        }
+       
     }
 
     // displays each word one at a time
