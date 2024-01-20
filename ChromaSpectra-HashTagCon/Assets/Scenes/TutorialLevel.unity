@@ -6875,9 +6875,17 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
+      propertyPath: maxPitch
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 860060615}
+    - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
+      propertyPath: stopAudioSource
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
       propertyPath: dialogueTypingSoundClip
       value: 

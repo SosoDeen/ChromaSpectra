@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using JetBrains.Annotations;
 
 public class UIManager : MonoBehaviour
 {
@@ -41,6 +42,13 @@ public class UIManager : MonoBehaviour
     [Header("Dialogue Audio")]
     [SerializeField] private AudioClip dialogueTypingSoundClip;
     private AudioSource dialogueAudioSource;
+    [SerializeField] private bool stopAudioSource; //keep one shot sounds from overlapping
+    //randomize pitch
+    [SerializeField] private int frequencyLevel = 2;
+    [Range(-3,3)]
+    [SerializeField] private float minPitch = 0.5f;
+    [Range(-3, 3)]
+    [SerializeField] private float maxPitch = 3f;
 
 
     private void Start()
@@ -122,13 +130,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void playDialogueSound(int currentDisplayedWordCount)
+    {
+        //play sound every word
+        /*if (stopAudioSource) //stopping sound before next one plays makes awful clipping sound
+        {
+            dialogueAudioSource.Stop();
+        }*/
+        dialogueAudioSource.pitch = Random.Range(minPitch, maxPitch);
+        dialogueAudioSource.PlayOneShot(dialogueTypingSoundClip);
+
+    }
+
     // displays each word one at a time
     public IEnumerator displaySentence()
     {
         for (int i = 0; i < sentenceWords.Length; i++)
         {
             //play sound for each word??
-            dialogueAudioSource.PlayOneShot(dialogueTypingSoundClip);
+            playDialogueSound(i);
             currentText += sentenceWords[i] + " ";
             Debug.Log("adding: " + sentenceWords[i]);
             yield return new WaitForSeconds(wordDelay);
