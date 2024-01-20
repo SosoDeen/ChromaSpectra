@@ -37,6 +37,12 @@ public class UIManager : MonoBehaviour
     public RectTransform inventoryBox;
     public float inventoryDistance = -200f;
     public float inventoryDelay = 2f;
+
+    [Header("Dialogue Audio")]
+    [SerializeField] private AudioClip dialogueTypingSoundClip;
+    private AudioSource dialogueAudioSource;
+
+
     private void Start()
     {
         manager = GameManager.Instance;
@@ -44,6 +50,9 @@ public class UIManager : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerMovement>();
         inventory = player.GetComponent<inventoryManager>();
+
+        //add dialogue sound source to scene
+        dialogueAudioSource  = this.gameObject.AddComponent<AudioSource>();
 
 
         for (int i = 0; i < inventoryButtons.Length; i++)
@@ -118,6 +127,8 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < sentenceWords.Length; i++)
         {
+            //play sound for each word??
+            dialogueAudioSource.PlayOneShot(dialogueTypingSoundClip);
             currentText += sentenceWords[i] + " ";
             Debug.Log("adding: " + sentenceWords[i]);
             yield return new WaitForSeconds(wordDelay);
