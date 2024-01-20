@@ -40,7 +40,8 @@ public class UIManager : MonoBehaviour
     public float inventoryDelay = 2f;
 
     [Header("Dialogue Audio")]
-    [SerializeField] private AudioClip dialogueTypingSoundClip;
+    //[SerializeField] private AudioClip dialogueTypingSoundClip;
+    [SerializeField] private AudioClip[] dialogueTypingSoundClips;
     private AudioSource dialogueAudioSource;
     [SerializeField] private bool stopAudioSource; //keep one shot sounds from overlapping
     //randomize pitch
@@ -137,8 +138,10 @@ public class UIManager : MonoBehaviour
         {
             dialogueAudioSource.Stop();
         }*/
+        int randomIndex = Random.Range(0, dialogueTypingSoundClips.Length);
+        AudioClip audioClip = dialogueTypingSoundClips[randomIndex];
         dialogueAudioSource.pitch = Random.Range(minPitch, maxPitch);
-        dialogueAudioSource.PlayOneShot(dialogueTypingSoundClip);
+        dialogueAudioSource.PlayOneShot(audioClip);
 
     }
 

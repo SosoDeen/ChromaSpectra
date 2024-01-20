@@ -6876,7 +6876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
       propertyPath: maxPitch
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
       propertyPath: playerScript
@@ -6890,6 +6890,22 @@ PrefabInstance:
       propertyPath: dialogueTypingSoundClip
       value: 
       objectReference: {fileID: 8300000, guid: 1aa4441650016de4f8f5e649bec8d4e8, type: 3}
+    - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
+      propertyPath: dialogueTypingSoundClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
+      propertyPath: dialogueTypingSoundClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8149bd20456430d43a663ece430f1523, type: 3}
+    - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
+      propertyPath: dialogueTypingSoundClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 80342e72be32f7142856a8c5a43fb3a6, type: 3}
+    - target: {fileID: 8655310318268455590, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
+      propertyPath: dialogueTypingSoundClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: c6c8f03a7c9252f49941c17ab78386f5, type: 3}
     - target: {fileID: 8740850906718140900, guid: 9124466d821fa2541a5ae9a30040969f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
