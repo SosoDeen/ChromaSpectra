@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class dialogueManager : MonoBehaviour
@@ -15,6 +16,12 @@ public class dialogueManager : MonoBehaviour
     private GameObject _speaker1;
     private GameObject _speaker2;
 
+ /*   [Header("Audio")]
+    [SerializeField] private AudioClip dialogueTypingSoundClip; //JM
+    private AudioSource audioSource; //plays dialogue sounds*/
+
+
+
     public interface Dialogue
     {
         TextAsset getDialogue();
@@ -28,6 +35,9 @@ public class dialogueManager : MonoBehaviour
         ui = GameObject.FindWithTag("UI").GetComponent<UIManager>();
         player = GameObject.FindWithTag("Player").GetComponent<playerMovement>();
 
+        //add audio source
+/*        audioSource = this.gameObject.AddComponent<AudioSource>(); //JM
+*/
     }
 
     //CJ causing chaos

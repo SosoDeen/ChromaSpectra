@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using JetBrains.Annotations;
 
 public class UIManager : MonoBehaviour
 {
@@ -37,6 +38,17 @@ public class UIManager : MonoBehaviour
     public RectTransform inventoryBox;
     public float inventoryDistance = -200f;
     public float inventoryDelay = 2f;
+
+    [Header("Dialogue Audio")]
+    [SerializeField] private DialogueAudioInfoSO defaultAudioInfo;
+    private DialogueAudioInfoSO currentAudioInfo; 
+    [SerializeField] private bool makePredictable; //whether or not we do randomized sound selection or not
+    private AudioSource dialogueAudioSource;
+    //Info Configurations
+    [SerializeField] private DialogueAudioInfoSO[] audioInfos;
+    private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
+
+
     private void Start()
     {
         manager = GameManager.Instance;
@@ -44,6 +56,11 @@ public class UIManager : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerMovement>();
         inventory = player.GetComponent<inventoryManager>();
+
+        //add dialogue sound source to scene
+        dialogueAudioSource  = this.gameObject.AddComponent<AudioSource>();
+        currentAudioInfo = defaultAudioInfo;
+        InitAudioInfoDictionary();
 
 
         for (int i = 0; i < inventoryButtons.Length; i++)
@@ -54,6 +71,35 @@ public class UIManager : MonoBehaviour
         }
 
         updateInventory();
+    }
+
+    private void InitAudioInfoDictionary()
+    {
+        audioInfoDictionary = new Dictionary<string, DialogueAudioInfoSO>
+        {
+            { defaultAudioInfo.id, defaultAudioInfo } //add default audio to beginning
+        };
+
+        //add dialogue scriptable objects to dictionary
+        foreach (DialogueAudioInfoSO audioInfo in audioInfos)
+        {
+            audioInfoDictionary.Add(audioInfo.id, audioInfo);
+        }
+
+    }
+
+    private void SetCurrentAudioInfo(string id)
+    {
+        DialogueAudioInfoSO audioInfo = null;
+        audioInfoDictionary.TryGetValue(id, out audioInfo);
+        if(audioInfo != null)
+        {
+            this.currentAudioInfo = audioInfo;
+        }
+        else
+        {
+            Debug.LogError("Faild to find dialogue audio info entry");
+        }
     }
 
     void Update()
@@ -113,11 +159,36 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void playDialogueSound(int currentDisplayedWordCount)
+    {
+        AudioClip[] dialogueTypingSoundClips = currentAudioInfo.dialogueTypingSoundClips;
+        int frequencyLevel = currentAudioInfo.frequencyLevel;
+        bool stopAudioSource = currentAudioInfo.stopAudioSource;
+        float minPitch = currentAudioInfo.minPitch;
+        float maxPitch = currentAudioInfo.maxPitch;
+
+        if(currentDisplayedWordCount % frequencyLevel == 0)
+        {
+            //play sound every word
+            if (stopAudioSource) //stopping sound before next one plays makes awful clipping sound
+            {
+                dialogueAudioSource.Stop();
+            }
+            int randomIndex = Random.Range(0, dialogueTypingSoundClips.Length);
+            AudioClip audioClip = dialogueTypingSoundClips[randomIndex];
+            dialogueAudioSource.pitch = Random.Range(minPitch, maxPitch);
+            dialogueAudioSource.PlayOneShot(audioClip);
+        }
+       
+    }
+
     // displays each word one at a time
     public IEnumerator displaySentence()
     {
         for (int i = 0; i < sentenceWords.Length; i++)
         {
+            //play sound for each word??
+            playDialogueSound(i);
             currentText += sentenceWords[i] + " ";
             Debug.Log("adding: " + sentenceWords[i]);
             yield return new WaitForSeconds(wordDelay);
