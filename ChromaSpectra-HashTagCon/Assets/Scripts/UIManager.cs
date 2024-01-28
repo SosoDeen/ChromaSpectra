@@ -40,18 +40,13 @@ public class UIManager : MonoBehaviour
     public float inventoryDelay = 2f;
 
     [Header("Dialogue Audio")]
-    /*    [SerializeField] private AudioClip[] dialogueTypingSoundClips;
-        [SerializeField] private bool stopAudioSource; //keep one shot sounds from overlapping
-        //randomize pitch
-        [SerializeField] private int frequencyLevel = 2; //word per sound frequency
-        [Range(-3,3)]
-        [SerializeField] private float minPitch = 0.5f;
-        [Range(-3, 3)]
-        [SerializeField] private float maxPitch = 3f;*/ //find all these in scriptable objects
     [SerializeField] private DialogueAudioInfoSO defaultAudioInfo;
     private DialogueAudioInfoSO currentAudioInfo; 
     [SerializeField] private bool makePredictable; //whether or not we do randomized sound selection or not
     private AudioSource dialogueAudioSource;
+    //Info Configurations
+    [SerializeField] private DialogueAudioInfoSO[] audioInfos;
+    private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
 
 
     private void Start()
@@ -65,6 +60,7 @@ public class UIManager : MonoBehaviour
         //add dialogue sound source to scene
         dialogueAudioSource  = this.gameObject.AddComponent<AudioSource>();
         currentAudioInfo = defaultAudioInfo;
+        InitAudioInfoDictionary();
 
 
         for (int i = 0; i < inventoryButtons.Length; i++)
@@ -75,6 +71,35 @@ public class UIManager : MonoBehaviour
         }
 
         updateInventory();
+    }
+
+    private void InitAudioInfoDictionary()
+    {
+        audioInfoDictionary = new Dictionary<string, DialogueAudioInfoSO>
+        {
+            { defaultAudioInfo.id, defaultAudioInfo } //add default audio to beginning
+        };
+
+        //add dialogue scriptable objects to dictionary
+        foreach (DialogueAudioInfoSO audioInfo in audioInfos)
+        {
+            audioInfoDictionary.Add(audioInfo.id, audioInfo);
+        }
+
+    }
+
+    private void SetCurrentAudioInfo(string id)
+    {
+        DialogueAudioInfoSO audioInfo = null;
+        audioInfoDictionary.TryGetValue(id, out audioInfo);
+        if(audioInfo != null)
+        {
+            this.currentAudioInfo = audioInfo;
+        }
+        else
+        {
+            Debug.LogError("Faild to find dialogue audio info entry");
+        }
     }
 
     void Update()
