@@ -40,14 +40,16 @@ public class UIManager : MonoBehaviour
     public float inventoryDelay = 2f;
 
     [Header("Dialogue Audio")]
-    [SerializeField] private AudioClip[] dialogueTypingSoundClips;
-    [SerializeField] private bool stopAudioSource; //keep one shot sounds from overlapping
-    //randomize pitch
-    [SerializeField] private int frequencyLevel = 2; //word per sound frequency
-    [Range(-3,3)]
-    [SerializeField] private float minPitch = 0.5f;
-    [Range(-3, 3)]
-    [SerializeField] private float maxPitch = 3f;
+    /*    [SerializeField] private AudioClip[] dialogueTypingSoundClips;
+        [SerializeField] private bool stopAudioSource; //keep one shot sounds from overlapping
+        //randomize pitch
+        [SerializeField] private int frequencyLevel = 2; //word per sound frequency
+        [Range(-3,3)]
+        [SerializeField] private float minPitch = 0.5f;
+        [Range(-3, 3)]
+        [SerializeField] private float maxPitch = 3f;*/ //find all these in scriptable objects
+    [SerializeField] private DialogueAudioInfoSO defaultAudioInfo;
+    private DialogueAudioInfoSO currentAudioInfo; 
     [SerializeField] private bool makePredictable; //whether or not we do randomized sound selection or not
     private AudioSource dialogueAudioSource;
 
@@ -62,6 +64,7 @@ public class UIManager : MonoBehaviour
 
         //add dialogue sound source to scene
         dialogueAudioSource  = this.gameObject.AddComponent<AudioSource>();
+        currentAudioInfo = defaultAudioInfo;
 
 
         for (int i = 0; i < inventoryButtons.Length; i++)
@@ -133,6 +136,12 @@ public class UIManager : MonoBehaviour
 
     private void playDialogueSound(int currentDisplayedWordCount)
     {
+        AudioClip[] dialogueTypingSoundClips = currentAudioInfo.dialogueTypingSoundClips;
+        int frequencyLevel = currentAudioInfo.frequencyLevel;
+        bool stopAudioSource = currentAudioInfo.stopAudioSource;
+        float minPitch = currentAudioInfo.minPitch;
+        float maxPitch = currentAudioInfo.maxPitch;
+
         if(currentDisplayedWordCount % frequencyLevel == 0)
         {
             //play sound every word
